@@ -5,6 +5,20 @@
     <meta name="theme-color" content="#d46917">
     <meta name="og:title" content="Homepage principale - Manuel Ottani Site"/>
     <meta name="og:description" content="Pagina principale del sito di Manuel Ottani (precedentemente bgamermanu.cf)"/>
+    <style>
+      #cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+  background-color: #333;
+  color: #fff;
+}
+    </style>
     <title>Homepage</title>
 </head>
 <body>
@@ -13,4 +27,31 @@
   <h2 style="text-align: center;"><span style="color: #ff0000;">Il sito &egrave; in fase di Restyling</span>! Esteticamente non cambier&agrave; molto, tanto l'uso sar&agrave; lo stesso di quello che era anche con il vecchio nome (ovvero un semplice sito per uso personale e per "accorciare" link in determinati casi)</h2>
   <h3 style="text-align: center;"><span style="background-color: #ffff00;">Il sito potrebbe andare offline per manutenzione qualche volta</span></h3>
   <p><iframe title="YouTube video player" src="https://www.youtube.com/embed/3W5cT6X9rOY" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe> <iframe title="YouTube video player" src="https://www.youtube.com/embed/09UpgV3r0AQ" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+  <div id="cookie-banner">
+      <p>We use cookies to enhance your experience on our website. By continuing to browse, you agree to our use of cookies. 
+         <button id="learn-more-btn">Learn more</button></p>
+      <button id="accept-cookies-btn">Accept</button>
+    </div>
+    <script>
+      // Get the accept cookies button
+      var acceptBtn = document.getElementById('accept-cookies-btn');
+
+      // Add an event listener to the button to handle the user's acceptance of cookies
+      acceptBtn.addEventListener('click', function() {
+        // Set a cookie to indicate that the user has accepted the use of cookies
+        document.cookie = "acceptedCookies=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+
+        // Hide the cookie banner
+        document.getElementById('cookie-banner').style.display = 'none';
+      });
+
+      // Get the learn more button
+      var learnMoreBtn = document.getElementById('learn-more-btn');
+
+      // Add an event listener to the button to handle the user clicking on it
+      learnMoreBtn.addEventListener('click', function() {
+        // Redirect the user to the page with more information about cookies on your website
+        window.location.href = "https://www.yourwebsite.com/cookies";
+      });
+    </script>
 </body>
