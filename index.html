@@ -43,5 +43,21 @@
         // Hide the cookie banner
         document.getElementById('cookie-banner').style.display = 'none';
       });
+      
+      // Pubblicità (prova)
+      var ad = "<div style='border: 1px solid black; position: relative;'>" +
+           "<img src='https://www.diegogiusti.it/wp-content/uploads/2020/06/placeholder.png' alt='Ad'/>" +
+           "<button style='position: absolute; top: 0; right: 0;' onclick='removeAd()'>X</button>" +
+           "</div>";
+
+  // Insert the ad into the page
+  var adContainer = document.getElementById("ad-container");
+  adContainer.innerHTML = ad;
+
+  // Define the function that will remove the ad from the page
+  function removeAd() {
+    var ad = document.getElementById("ad");
+    ad.parentNode.removeChild(ad);
+  }
     </script>
 </body>
