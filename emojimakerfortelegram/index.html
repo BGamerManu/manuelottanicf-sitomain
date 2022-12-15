@@ -1,103 +1,326 @@
-
 <html>
     <head>
         <script>
         document.addEventListener("DOMContentLoaded", function() {
 
-var button = document.createElement('button');
-button.innerHTML = 'Ridimensiona immagine';
-button.style.position = 'absolute';
-button.style.top = '50%';
-button.style.left = '50%';
-button.style.transform = 'translate(-50%, -50%)';
-document.body.appendChild(button);
+var resizeImageHere = document.createElement('div');
+resizeImageHere.innerHTML = 'Ridimensiona immagine qui';
+resizeImageHere.style.position = 'absolute';
+resizeImageHere.style.top = '50%';
+resizeImageHere.style.left = '50%';
+resizeImageHere.style.transform = 'translate(-50%, -50%)';
+resizeImageHere.style.fontSize = '20px';
+resizeImageHere.style.fontWeight = 'bold';
+resizeImageHere.style.color = '#fff';
+resizeImageHere.style.backgroundColor = '#000';
+resizeImageHere.style.padding = '10px';
+resizeImageHere.style.borderRadius = '5px';
+resizeImageHere.style.cursor = 'pointer';
+document.body.appendChild(resizeImageHere);
 
-button.style.fontSize = '20px';
-
-button.style.fontSize = '12px';
-
-button.addEventListener('click', function() {
-  var input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'image/png, image/jpeg, image/webp';
+var input = document.createElement('input');
+input.type = 'file';
+input.accept = 'image/png, image/webp, image/jpeg';
+input.style.display = 'none';
+document.body.appendChild(input);
+resizeImageHere.addEventListener('click', function() {
   input.click();
-  input.addEventListener('change', function() {
-    var file = input.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function() {
-      var image = new Image();
-      image.src = reader.result;
-      image.onload = function() {
-        var canvas = document.createElement('canvas');
-        canvas.width = 100;
-        canvas.height = 100;
-        var context = canvas.getContext('2d');
-        context.drawImage(image, 0, 0, 100, 100);
-        var dataURL = canvas.toDataURL('image/jpeg', 0.125);
-        var link = document.createElement('a');
-        link.href = dataURL;
-        link.download = 'image.jpg';
-        link.click();
-      };
-    };
-  });
 });
 
-button.style.backgroundColor = '#2ca5e0';
-button.style.color = 'white';
-button.style.border = 'none';
-button.style.borderRadius = '5px';
-button.style.padding = '10px';
-button.style.fontSize = '16px';
-button.style.cursor = 'pointer';
+resizeImageHere.style.backgroundColor = '#0088cc';
+resizeImageHere.style.color = '#fff';
+resizeImageHere.style.fontSize = '20px';
+resizeImageHere.style.fontWeight = 'bold';
+resizeImageHere.style.padding = '10px';
+resizeImageHere.style.borderRadius = '5px';
+resizeImageHere.style.cursor = 'pointer';
 
-var telegram = document.createElement('img');
-telegram.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png';
-telegram.style.position = 'absolute';
-telegram.style.top = '50%';
-telegram.style.left = '50%';
-telegram.style.transform = 'translate(-50%, -50%)';
-telegram.style.width = '100px';
-document.body.appendChild(telegram);
+resizeImageHere.style.fontFamily = 'arial';
 
-telegram.style.top = '30%';
+resizeImageHere.style.fontSize = '18px';
 
-button.innerHTML = 'Scegli un immagine per gli emojipack';
+var telegramLogo = document.createElement('img');
+telegramLogo.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png';
+telegramLogo.style.position = 'absolute';
+telegramLogo.style.top = '50%';
+telegramLogo.style.left = '50%';
+telegramLogo.style.transform = 'translate(-50%, -50%)';
+telegramLogo.style.width = '100px';
+document.body.appendChild(telegramLogo);
+
+telegramLogo.style.top = '30%';
 
 var text = document.createElement('div');
-text.innerHTML = 'Questo tool ti permette di ridimensionare foto in emoji statici per @Stickers su telegram';
+text.innerHTML = 'Qui puoi ridimensionare i file per gli emojipack su @Stickers';
 text.style.position = 'absolute';
-text.style.top = '70%';
+text.style.top = '50%';
 text.style.left = '50%';
 text.style.transform = 'translate(-50%, -50%)';
-text.style.fontSize = '12px';
+text.style.fontSize = '20px';
+text.style.fontWeight = 'bold';
+text.style.color = '#fff';
+text.style.backgroundColor = '#000';
+text.style.padding = '10px';
+text.style.borderRadius = '5px';
+text.style.cursor = 'pointer';
+text.style.fontFamily = 'arial';
 document.body.appendChild(text);
 
-text.style.fontSize = '16px';
+text.style.top = '80%';
 
-text.style.fontSize = '30px';
+text.style.top = '65%';
+
+text.style.fontSize = '16px';
+text.style.backgroundColor = 'transparent';
+
+text.style.color = '#000';
 
 text.style.textAlign = 'center';
-text.style.fontFamily = 'arial';
 
-text.style.top = '75%';
+text.style.fontSize = '18px';
 
-telegram.style.top = '25%';
+resizeImageHere.style.fontSize = '15px';
 
-text.innerHTML = 'Questo tool ti permette di ridimensionare foto in emoji statici per <a href="https://t.me/Stickers">@Stickers</a> su telegram';
+resizeImageHere.style.fontSize = '20px';
 
-text.querySelector('a').style.color = 'red';
+telegramLogo.style.top = '25%';
+
+telegramLogo.style.top = '28%';
+
+input.addEventListener('change', function() {
+  var file = input.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = 100;
+      canvas.height = 100;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, 100, 100);
+      var dataURL = canvas.toDataURL('image/png');
+      var blob = dataURLtoBlob(dataURL);
+      var fileName = file.name.split('.');
+      fileName.pop();
+      fileName = fileName.join('.');
+      fileName += '.png';
+      saveAs(blob, fileName);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+input.addEventListener('change', function() {
+  var file = input.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = 100;
+      canvas.height = 100;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, 100, 100);
+      var dataURL = canvas.toDataURL('image/png');
+      var blob = dataURLtoBlob(dataURL);
+      var fileName = 'for_sticker_bot.png';
+      saveAs(blob, fileName);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+resizeImageHere.innerHTML = 'Crea emoji statica';
+
+resizeImageHere.style.left = '48%';
+
+resizeImageHere.style.left = '35%';
+
+var createVideoEmoji = document.createElement('div');
+createVideoEmoji.innerHTML = 'Crea emoji video';
+createVideoEmoji.style.position = 'absolute';
+createVideoEmoji.style.top = '50%';
+createVideoEmoji.style.left = '50%';
+createVideoEmoji.style.transform = 'translate(-50%, -50%)';
+createVideoEmoji.style.fontSize = '20px';
+createVideoEmoji.style.fontWeight = 'bold';
+createVideoEmoji.style.color = '#fff';
+createVideoEmoji.style.backgroundColor = '#0088cc';
+createVideoEmoji.style.padding = '10px';
+createVideoEmoji.style.borderRadius = '5px';
+createVideoEmoji.style.cursor = 'pointer';
+document.body.appendChild(createVideoEmoji);
+
+createVideoEmoji.style.fontFamily = 'arial';
+createVideoEmoji.style.left = '55%';
+
+createVideoEmoji.style.left = '65%';
+
+var inputVideo = document.createElement('input');
+inputVideo.type = 'file';
+inputVideo.accept = 'video/webm, video/mp4, video/ogg';
+inputVideo.style.display = 'none';
+document.body.appendChild(inputVideo);
+createVideoEmoji.addEventListener('click', function() {
+  inputVideo.click();
+});
+inputVideo.addEventListener('change', function() {
+  var file = inputVideo.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var video = document.createElement('video');
+    video.onloadeddata = function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = 100;
+      canvas.height = 100;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(video, 0, 0, 100, 100);
+      var dataURL = canvas.toDataURL('image/webp');
+      var blob = dataURLtoBlob(dataURL);
+      var fileName = file.name.split('.');
+      fileName.pop();
+      fileName = fileName.join('.');
+      fileName += '.webp';
+      saveAs(blob, fileName);
+    };
+    video.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+inputVideo.addEventListener('change', function() {
+  var file = inputVideo.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var video = document.createElement('video');
+    video.onloadeddata = function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = 100;
+      canvas.height = 100;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(video, 0, 0, 100, 100);
+      var dataURL = canvas.toDataURL('image/webp');
+      var blob = dataURLtoBlob(dataURL);
+      var fileName = file.name.split('.');
+      fileName.pop();
+      fileName = fileName.join('.');
+      fileName += '.webp';
+      saveAs(blob, fileName);
+    };
+    video.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+  if (file.type !== 'video/mp4' && file.type !== 'video/mov' && file.type !== 'video/webm') {
+    var error = document.createElement('div');
+    error.innerHTML = 'Tipo di formato video non supportato, convertilo o in .mp4 o in .mov';
+    error.style.position = 'absolute';
+    error.style.top = '50%';
+    error.style.left = '50%';
+    error.style.transform = 'translate(-50%, -50%)';
+    error.style.fontSize = '20px';
+    error.style.fontWeight = 'bold';
+    error.style.color = '#fff';
+    error.style.backgroundColor = '#000';
+    error.style.padding = '10px';
+    error.style.borderRadius = '5px';
+    error.style.cursor = 'pointer';
+    document.body.appendChild(error);
+    setTimeout(function() {
+      document.body.removeChild(error);
+    }, 5000);
+  }
+});
+
+input.addEventListener('change', function() {
+  var file = input.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = 100;
+      canvas.height = 100;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, 100, 100);
+      var dataURL = canvas.toDataURL('image/png');
+      var blob = dataURLtoBlob(dataURL);
+      var fileName = 'for_sticker_bot.png';
+      saveAs(blob, fileName);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+inputVideo.accept = 'video/webm, video/mp4, video/ogg, video/mov';
+
+input.addEventListener('change', function() {
+  var file = input.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = new Image();
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = 100;
+      canvas.height = 100;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, 100, 100);
+      var dataURL = canvas.toDataURL('image/png');
+      var blob = dataURLtoBlob(dataURL);
+      var fileName = 'for_sticker_bot.png';
+      saveAs(blob, fileName);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+inputVideo.addEventListener('change', function() {
+  var file = inputVideo.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var video = document.createElement('video');
+    video.onloadeddata = function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = 100;
+      canvas.height = 100;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(video, 0, 0, 100, 100);
+      var dataURL = canvas.toDataURL('image/webp');
+      var blob = dataURLtoBlob(dataURL);
+      var fileName = file.name.split('.');
+      fileName.pop();
+      fileName = fileName.join('.');
+      fileName += '.webp';
+      saveAs(blob, fileName);
+    };
+    video.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+  if (file.type !== 'video/mp4' && file.type !== 'video/mov' && file.type !== 'video/webm') {
+    var error = document.createElement('div');
+    error.innerHTML = 'Tipo di formato video non supportato, convertilo o in .mp4 o in .mov';
+    error.style.position = 'absolute';
+    error.style.top = '50%';
+    error.style.left = '50%';
+    error.style.transform = 'translate(-50%, -50%)';
+    error.style.fontSize = '20px';
+    error.style.fontWeight = 'bold';
+    error.style.color = '#fff';
+    error.style.backgroundColor = '#000';
+    error.style.padding = '10px';
+    error.style.borderRadius = '5px';
+    error.style.cursor = 'pointer';
+    document.body.appendChild(error);
+    setTimeout(function() {
+      document.body.removeChild(error);
+    }, 5000);
+  }
+});
 });
         </script>
     </head>
     <body style="margin: 0;">
-        <div style="background-color: black; position: fixed; bottom: 0; width: 100%; height: 20px; padding: 20px; opacity: .85; z-index: 1000;">
-            <svg id="Layer_1" data-name="Layer 1" height="40px" width="40px" style="top: -8px;
-            position: relative;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><defs><style>.cls-1{fill:#fff;}</style></defs><title>openai-symbol-flat-white</title><path class="cls-1" d="M617.24,354a126.36,126.36,0,0,0-10.86-103.79,127.8,127.8,0,0,0-137.65-61.32,126.36,126.36,0,0,0-95.31-42.49A127.81,127.81,0,0,0,251.5,234.89,126.4,126.4,0,0,0,167,296.19a127.82,127.82,0,0,0,15.72,149.86,126.36,126.36,0,0,0,10.86,103.79,127.81,127.81,0,0,0,137.65,61.32,126.36,126.36,0,0,0,95.31,42.49A127.81,127.81,0,0,0,548.5,565.11,126.4,126.4,0,0,0,633,503.81,127.82,127.82,0,0,0,617.24,354ZM426.58,620.49a94.79,94.79,0,0,1-60.85-22c.77-.42,2.12-1.16,3-1.7l101-58.34a16.42,16.42,0,0,0,8.3-14.37V381.69l42.69,24.65a1.52,1.52,0,0,1,.83,1.17V525.43A95.18,95.18,0,0,1,426.58,620.49ZM222.34,533.26A94.74,94.74,0,0,1,211,469.56c.75.45,2.06,1.25,3,1.79l101,58.34a16.44,16.44,0,0,0,16.59,0l123.31-71.2v49.3a1.53,1.53,0,0,1-.61,1.31L352.19,568.05A95.16,95.16,0,0,1,222.34,533.26ZM195.77,312.77a94.71,94.71,0,0,1,49.48-41.68c0,.87-.05,2.41-.05,3.48V391.25a16.41,16.41,0,0,0,8.29,14.36L376.8,476.8l-42.69,24.65a1.53,1.53,0,0,1-1.44.13l-102.11-59A95.16,95.16,0,0,1,195.77,312.77Zm350.74,81.62L423.2,323.19l42.69-24.64a1.53,1.53,0,0,1,1.44-.13l102.11,58.95a95.08,95.08,0,0,1-14.69,171.55c0-.88,0-2.42,0-3.49V408.75A16.4,16.4,0,0,0,546.51,394.39ZM589,330.44c-.75-.46-2.06-1.25-3-1.79L485,270.31a16.46,16.46,0,0,0-16.59,0l-123.31,71.2v-49.3a1.53,1.53,0,0,1,.61-1.31L447.81,232A95.07,95.07,0,0,1,589,330.44ZM321.89,418.31l-42.7-24.65a1.52,1.52,0,0,1-.83-1.17V274.57a95.07,95.07,0,0,1,155.9-73c-.77.42-2.11,1.16-3,1.7l-101,58.34a16.41,16.41,0,0,0-8.3,14.36Zm23.19-50L400,336.59l54.92,31.7v63.42L400,463.41l-54.92-31.7Z"/></svg>
-            <div style="display: inline-block; color: white; vertical-align: top; margin-top: 4px; font-family: Helvetica, sans-serif;">
-                Code generated by <a style="color: white; text-decoration: none; font-weight: bold;" href="https://openai.com/blog/openai-codex/">OpenAI Codex</a>
-            </div>
-        </div>
     </body>
 </html>
