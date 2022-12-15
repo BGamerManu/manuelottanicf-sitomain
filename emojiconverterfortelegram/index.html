@@ -1,0 +1,154 @@
+<html>
+    <head>
+      <meta name="og:title" content="Emoji converter for Telegram"/>
+      <meta name="og:description" content="Tool per convertire QUALSIASI formato foto nel formato adatto per le emoji STATICHE di telegram"/>
+      <meta name="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png"/>
+      <meta name="theme-color" content="#2AABEE">
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+var button = document.createElement('button');
+button.innerHTML = 'Emoji statiche';
+button.style.position = 'absolute';
+button.style.top = '50%';
+button.style.left = '50%';
+button.style.transform = 'translate(-50%, -50%)';
+document.body.appendChild(button);
+
+button.style.backgroundColor = '#2ca5e0';
+button.style.border = 'none';
+button.style.borderRadius = '2px';
+button.style.color = 'white';
+button.style.fontSize = '16px';
+button.style.fontWeight = 'bold';
+button.style.padding = '10px';
+button.style.textAlign = 'center';
+button.style.textDecoration = 'none';
+button.style.display = 'inline-block';
+button.style.cursor = 'pointer';
+
+document.body.style.fontFamily = 'arial';
+
+var telegram = document.createElement('img');
+telegram.src = 'https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg';
+telegram.style.position = 'absolute';
+telegram.style.top = '50%';
+telegram.style.left = '50%';
+telegram.style.transform = 'translate(-50%, -50%)';
+telegram.style.width = '100px';
+document.body.appendChild(telegram);
+
+telegram.style.width = '80px';
+telegram.style.top = '30%';
+
+button.onclick = function() {
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.click();
+  input.onchange = function() {
+    var file = input.files[0];
+    var reader = new FileReader();
+    reader.onload = function() {
+      telegram.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  };
+};
+
+var resize = function(image, width, height, maxSize) {
+  var canvas = document.createElement('canvas');
+  var ctx = canvas.getContext('2d');
+  var imageWidth = image.width;
+  var imageHeight = image.height;
+  var ratio = imageWidth / imageHeight;
+  if (ratio > 1) {
+    canvas.width = width;
+    canvas.height = width / ratio;
+  } else {
+    canvas.width = height * ratio;
+    canvas.height = height;
+  }
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+  var data = canvas.toDataURL('image/png');
+  if (data.length > maxSize) {
+    return resize(image, width / 2, height / 2, maxSize);
+  }
+  return data;
+};
+
+button.onclick = function() {
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.click();
+  input.onchange = function() {
+    var file = input.files[0];
+    var reader = new FileReader();
+    reader.onload = function() {
+      var image = new Image();
+      image.src = reader.result;
+      image.onload = function() {
+        var data = resize(image, 100, 100, 128 * 1024);
+        var a = document.createElement('a');
+        a.href = data;
+        a.download = 'for_stickers_bot.png';
+        a.click();
+      };
+    };
+    reader.readAsDataURL(file);
+  };
+};
+
+var resize = function(image, width, height, maxSize) {
+  var canvas = document.createElement('canvas');
+  var ctx = canvas.getContext('2d');
+  var imageWidth = image.width;
+  var imageHeight = image.height;
+  var ratio = imageWidth / imageHeight;
+  if (ratio > 1) {
+    canvas.width = width;
+    canvas.height = width / ratio;
+  } else {
+    canvas.width = height * ratio;
+    canvas.height = height;
+  }
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+  var data = canvas.toDataURL('image/png');
+  if (data.length > maxSize) {
+    return resize(image, width / 2, height / 2, maxSize);
+  }
+  return data;
+};
+
+button.onclick = function() {
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.click();
+  input.onchange = function() {
+    var file = input.files[0];
+    var reader = new FileReader();
+    reader.onload = function() {
+      var image = new Image();
+      image.src = reader.result;
+      image.onload = function() {
+        var data = resize(image, 100, 100, 1024 * 1024 * 1024);
+        var a = document.createElement('a');
+        a.href = data;
+        a.download = 'for_stickers_bot.png';
+        a.click();
+      };
+    };
+    reader.readAsDataURL(file);
+  };
+};
+});
+        </script>
+    </head>
+    <body style="margin: 0;">
+        <div style="background-color: black; position: fixed; bottom: 0; width: 100%; height: 20px; padding: 20px; opacity: .85; z-index: 1000;">
+            <svg id="Layer_1" data-name="Layer 1" height="40px" width="40px" style="top: -8px;
+            position: relative;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><defs><style>.cls-1{fill:#fff;}</style></defs>
+    </body>
+</html>
