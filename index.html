@@ -1,81 +1,63 @@
-<!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#990b0d">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#d46917">
     <meta name="og:title" content="Homepage principale - Manuel Ottani Site"/>
     <meta name="og:description" content="Pagina principale del sito di Manuel Ottani (precedentemente bgamermanu.cf)"/>
-  <title>Manuel ottani site</title>
-  <style>
-    body {
-      background-color: red;
-      color: white;
-      font-family: Arial;
-      text-align: center;
-      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    }
-    h1 {
-      margin: auto;
-    }
-    #custom-text {
-      margin: auto;
-    }
-
-.snowflake {
-  position: absolute;
-  top: -50px;
-  left: -50px;
-  width: 50px;
-  height: 50px;
-  background: white;
-  border-radius: 50%;
-  animation: fall linear infinite;
-  transform: rotate(45deg);
+    <style>
+      #cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+  background-color: #333;
+  color: #fff;
 }
-
-@keyframes fall {
-  0% {
-    top: -50px;
-  }
-  100% {
-    top: 100%;
-  }
-}
-
-  </style>
+    </style>
+    <title>Homepage</title>
 </head>
 <body>
-  <h1>Buon Natale 2022</h1>
-  <div id="countdown" style="margin: auto;"></div>
-  <div id="custom-text">Non avevo ne budget, ne tempo per fare una roba migliore di così</div>
-  <script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("Jan 1, 2023 00:00:00").getTime();
+  <h1 style="text-align: center;"><span style="color: #ff6600;">Benvenuto nel sito di Manuel Ottani</span></h1>
+  <p>&nbsp;</p>
+  <h2 style="text-align: center;"><span style="color: #ff0000;">Il sito &egrave; in fase di Restyling</span>! Esteticamente non cambier&agrave; molto, tanto l'uso sar&agrave; lo stesso di quello che era anche con il vecchio nome (ovvero un semplice sito per uso personale e per "accorciare" link in determinati casi)</h2>
+  <h3 style="text-align: center;"><span style="background-color: #ffff00;">Il sito potrebbe andare offline per manutenzione qualche volta</span></h3>
+  <p><iframe title="YouTube video player" src="https://www.youtube.com/embed/3W5cT6X9rOY" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe> <iframe title="YouTube video player" src="https://www.youtube.com/embed/09UpgV3r0AQ" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+  <div id="cookie-banner">
+      <p>We use cookies to enhance your experience on our website. By continuing to browse, you agree to our use of cookies. 
+      <button id="accept-cookies-btn">Accept</button>
+    </div>
+    <script>
+      // Get the accept cookies button
+      var acceptBtn = document.getElementById('accept-cookies-btn');
 
-    // Update the count down every 1 second
-    var x = setInterval(function() {
+      // Add an event listener to the button to handle the user's acceptance of cookies
+      acceptBtn.addEventListener('click', function() {
+        // Set a cookie to indicate that the user has accepted the use of cookies
+        document.cookie = "acceptedCookies=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 
-      // Get today's date and time
-      var now = new Date().getTime();
+        // Hide the cookie banner
+        document.getElementById('cookie-banner').style.display = 'none';
+      });
+      
+      // Pubblicità (prova)
+      var ad = "<div style='border: 1px solid black; position: relative;'>" +
+           "<img src='https://www.diegogiusti.it/wp-content/uploads/2020/06/placeholder.png' alt='Ad'/>" +
+           "<button style='position: absolute; top: 0; right: 0;' onclick='removeAd()'>X</button>" +
+           "</div>";
 
-      // Find the distance between now and the count down date
-      var distance = countDownDate - now;
+  // Insert the ad into the page
+  var adContainer = document.getElementById("ad-container");
+  adContainer.innerHTML = ad;
 
-      // Time calculations for days, hours, minutes and seconds
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      // Display the result in the element with id="countdown"
-      document.getElementById("countdown").innerHTML = "Capodanno in " + days + "d " + hours + "h " + minutes + "min " + seconds + "secs.";
-
-      // If the count down is finished, write some text
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("countdown").innerHTML = "È Capodanno!";
-      }
-    }, 1000);
-  </script>
+  // Define the function that will remove the ad from the page
+  function removeAd() {
+    var ad = document.getElementById("ad");
+    ad.parentNode.removeChild(ad);
+  }
+    </script>
 </body>
-</html>
