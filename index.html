@@ -1,70 +1,37 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="Manuel Ottani Homepage">
-<meta property="og:type" content="">
-<meta property="og:image" content="">
-<meta property="og:description" content="La homepage del sito di Manuel Ottani. Questo sito verrà principalmente usato per redirect o "illustrazioni" di cose senza dove per forza riscrivere 100 volte la stessa cosa">
-<meta name="theme-color" content="#3476e0">
-<meta name="twitter:card" content="">
-<meta name="twitter:title" content="Manuel Ottani Homepage">
-<meta name="twitter:description" content="La homepage del sito di Manuel Ottani. Questo sito verrà principalmente usato per redirect o 'llustrazioni' di cose senza dove per forza riscrivere 100 volte la stessa cosa">
-<meta name="twitter:image" content="">
-<meta name="twitter:image:alt" content="La homepage del sito di Manuel Ottani. Questo sito verrà principalmente usato per redirect o 'illustrazioni' di cose senza dove per forza riscrivere 100 volte la stessa cosa">
-    <style>
-      #cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5em 1em;
-  background-color: #333;
-  color: #fff;
-}
-    </style>
-    <title>Homepage</title>
+  <title>Homepage</title>
+  <style>
+    body {
+      background-color: white;
+    }
+
+    .centered-text {
+      text-align: center;
+    }
+
+    .red-bold {
+      color: red;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+    }
+
+    .smaller-text {
+      font-size: 14px;
+    }
+
+    .black-bold {
+      color: black;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+    }
+  </style>
 </head>
 <body>
-  <h1 style="text-align: center;"><span style="color: #ff6600;">Benvenuto nel sito di Manuel Ottani</span></h1>
-  <p>&nbsp;</p>
-  <h2 style="text-align: center;"><span style="color: #ff0000;">Il sito &egrave; in fase di Restyling</span>! Esteticamente non cambier&agrave; molto, tanto l'uso sar&agrave; lo stesso di quello che era anche con il vecchio nome (ovvero un semplice sito per uso personale e per "accorciare" link in determinati casi)</h2>
-  <h3 style="text-align: center;"><span style="background-color: #ffff00;">Il sito potrebbe andare offline per manutenzione qualche volta</span></h3>
-  <p><iframe title="YouTube video player" src="https://www.youtube.com/embed/3W5cT6X9rOY" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe> <iframe title="YouTube video player" src="https://www.youtube.com/embed/09UpgV3r0AQ" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
-  <div id="cookie-banner">
-      <p>We use cookies to enhance your experience on our website. By continuing to browse, you agree to our use of cookies. 
-      <button id="accept-cookies-btn">Accept</button>
-    </div>
-    <script>
-      // Get the accept cookies button
-      var acceptBtn = document.getElementById('accept-cookies-btn');
-
-      // Add an event listener to the button to handle the user's acceptance of cookies
-      acceptBtn.addEventListener('click', function() {
-        // Set a cookie to indicate that the user has accepted the use of cookies
-        document.cookie = "acceptedCookies=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-
-        // Hide the cookie banner
-        document.getElementById('cookie-banner').style.display = 'none';
-      });
-      
-      // Pubblicità (prova)
-      var ad = "<div style='border: 1px solid black; position: relative;'>" +
-           "<img src='https://www.diegogiusti.it/wp-content/uploads/2020/06/placeholder.png' alt='Ad'/>" +
-           "<button style='position: absolute; top: 0; right: 0;' onclick='removeAd()'>X</button>" +
-           "</div>";
-
-  // Insert the ad into the page
-  var adContainer = document.getElementById("ad-container");
-  adContainer.innerHTML = ad;
-
-  // Define the function that will remove the ad from the page
-  function removeAd() {
-    var ad = document.getElementById("ad");
-    ad.parentNode.removeChild(ad);
-  }
-    </script>
+  <div class="centered-text">
+    <p class="red-bold">Questa è la homepage</p>
+    <p class="smaller-text black-bold">Non so che cosa piazzare qua pardon</p>
+  </div>
 </body>
+</html>
