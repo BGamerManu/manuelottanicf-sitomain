@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="og:title" content="Redirect"/>
+  <meta name="og:description" content="Redirect al mercatino dell'usato di Manuel!"/>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        #countdown {
+            font-size: 2em;
+        }
+        #message {
+            margin-bottom: 20px;
+        }
+        #progress {
+            width: 100%;
+            background-color: #f3f3f3;
+        }
+        #bar {
+            width: 0%;
+            height: 30px;
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Stai per essere reindirizzato</div>
+    <div id="countdown">5</div>
+    <div id="progress">
+        <div id="bar"></div>
+    </div>
+    <script>
+        var countdownElement = document.getElementById('countdown');
+        var barElement = document.getElementById('bar');
+        var countdown = 5;
+        var progress = 0;
+        function startCountdown() {
+            var countdownInterval = setInterval(function() {
+                countdown--;
+                progress += 20;
+                countdownElement.innerText = countdown;
+                barElement.style.width = progress + '%';
+                if(countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = 'https://t.me/il_mercatino_di_manuel';
+                }
+            }, 1000);
+        }
+        startCountdown();
+    </script>
+</body>
+</html>
