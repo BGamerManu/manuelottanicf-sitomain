@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifiche Native</title>
+  <meta name="description" content="Crea e invia notifiche personalizzate direttamente dal tuo browser.">
+  <meta name="keywords" content="notifiche, browser, web, personalizzate">
+  <meta name="title" content="Notifiche personalizzate">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1f1f1f; /* Colore di sfondo scuro di default */
+      color: #fff; /* Testo bianco */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Centra i contenuti orizzontalmente */
+      justify-content: center; /* Centra i contenuti verticalmente */
+      height: 100vh;
+      padding: 20px; /* Aggiungo un po' di spazio intorno ai contenuti */
+      margin: 0;
+    }
+
+    h1 {
+      color: #00bfff; /* Colore blu per il titolo */
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      width: 100%; /* Larghezza massima dei campi */
+      max-width: 400px; /* Larghezza massima dei campi */
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input, textarea {
+      width: 100%; /* Occupa l'intera larghezza del contenitore */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #333; /* Testo nero */
+      margin-top: 5px; /* Aggiungo un po' di spazio sopra */
+      box-sizing: border-box; /* Calcola la larghezza compresa del padding */
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .notification-image {
+      width: 100%; /* Occupa l'intera larghezza del contenitore */
+      height: auto;
+      margin-top: 10px; /* Aggiungo spazio sopra l'immagine */
+    }
+
+    ::placeholder { /* Stile per il testo del placeholder */
+      color: #ccc; /* Colore grigio chiaro */
+    }
+
+    #enable-notifications {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <button id="enable-notifications" onclick="requestNotificationPermission()">Abilita Notifiche</button>
+
+  <h1>Crea Notifiche Personalizzate</h1>
+
+  <div class="form-group">
+    <label for="title">Titolo della Notifica:</label>
+    <input type="text" id="title" placeholder=" ">
+  </div>
+
+  <div class="form-group">
+    <label for="message">Messaggio della Notifica:</label>
+    <textarea id="message" placeholder=" "></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="image-url">URL Immagine (opzionale):</label>
+    <input type="text" id="image-url" placeholder=" ">
+  </div>
+
+  <button onclick="showNotification()">Invia</button>
+
+  <script>
+    function requestNotificationPermission() {
+      // Verifica se il browser supporta le notifiche
+      if (!("Notification" in window)) {
+        alert("Questo browser non supporta le notifiche desktop.");
+        return;
+      }
+
+      // Chiede il permesso all'utente
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          alert("Notifiche abilitate!");
+        } else {
+          alert("Devi permettere le notifiche per utilizzare questa funzionalità.");
+        }
+      });
+    }
+
+    function showNotification() {
+      const title = document.getElementById('title').value;
+      const message = document.getElementById('message').value;
+      const imageUrl = document.getElementById('image-url').value;
+
+      if (title && message) {
+        // Crea una nuova notifica
+        const notification = new Notification(title, {
+          body: message,
+          icon: imageUrl ? imageUrl : 'https://via.placeholder.com/150', // Fallback all'immagine predefinita se non viene fornito un URL
+          image: imageUrl ? imageUrl : 'https://via.placeholder.com/150' // Aggiunta dell'immagine nella notifica stessa
+        });
+
+        // Aggiunge un listener per quando la notifica viene cliccata
+        notification.addEventListener("click", () => {
+          alert("Hai cliccato sulla notifica!");
+        });
+      } else {
+        alert("Compila i campi di titolo e messaggio.");
+      }
+    }
+  </script>
+</body>
+</html>
